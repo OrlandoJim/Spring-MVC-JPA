@@ -55,7 +55,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/form")
-	public String guardar (@Valid Cliente cliente, BindingResult result, Model model, SessionStatus status) {
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			if(cliente.getId() != null && cliente.getId() > 0) {
 				model.addAttribute("titulo", "Editar datos del cliente");

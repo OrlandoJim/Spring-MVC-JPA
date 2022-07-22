@@ -6,37 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
+import com.bolsadeideas.springboot.app.models.dao.IClienteDaoCR;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
-	private IClienteDao clienteDao;
+	private IClienteDaoCR clienteDao;
 	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> listarTodos() {
-		return clienteDao.listarTodos();
+		return (List<Cliente>) clienteDao.findAll();
 	}
 
 	@Override
 	@Transactional
 	public void guardar(Cliente cliente) {
-		clienteDao.guardar(cliente);
+		clienteDao.save(cliente);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Cliente buscarPorId(Long id) {
-		return clienteDao.buscarPorId(id);
+		return clienteDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
 	public void eliminar(Long id) {
-		clienteDao.eliminar(id);
+		clienteDao.deleteById(id);
 	}
 
 }

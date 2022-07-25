@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-</head>
+<head th:replace="layout/layout :: head"></head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring Boot</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Clientes</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div class="container">
-		<h1 class="text-primary" th:text="${titulo}"></h1>
-		<a th:href="@{/form}">Agregar cliente</a>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+	<div class="card bg-light">
+	<div class="card-header" th:text="${titulo}"></div>
+	<div class="card-body">
+		<h4 class="card-title"><a th:href="@{/form}" class="btn btn-primary btn-xs">Agregar cliente</a></h4>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -50,6 +32,10 @@
 				</tr>
 			</tbody>
 		</table>
+		<nav th:replace="paginator-nav :: paginator"></nav>
+		</div>
+		</div>
 	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

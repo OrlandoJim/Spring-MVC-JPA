@@ -17,6 +17,8 @@ public interface IClienteService {
 	
 	public Cliente buscarPorId(Long id);
 	
+	public Cliente fetchClienteByIdWithFacturas(Long id);
+	
 	public void eliminar(Long id);
 	
 	public Page<Cliente> listarTodos(Pageable pageable);
@@ -30,4 +32,6 @@ public interface IClienteService {
 	public Factura findFacturaById(Long id);
 	
 	public void deleteFactura(Long id);
+	
+	public Factura fetchFacturaByIdWithClienteWithItemFacturaWithProducto(Long id);
 }
